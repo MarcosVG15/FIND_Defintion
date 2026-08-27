@@ -62,13 +62,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Inflating with a null root and passing the resulting View to
-        // setContentView (instead of setContentView(int)) skips the code path
-        // where PhoneWindow attaches the XML root directly into its own
-        // content FrameLayout - that attachment call is what crashes on this
-        // device's framework build, regardless of what the root tag contains.
-        View root = getLayoutInflater().inflate(R.layout.activity_main, null);
-        setContentView(root);
+        setContentView(R.layout.activity_main);
 
         card = findViewById(R.id.card);
         tvWord = (TextView) findViewById(R.id.tvWord);
