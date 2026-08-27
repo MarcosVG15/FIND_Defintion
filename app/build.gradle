@@ -1,0 +1,29 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.talktranslate.app'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.talktranslate.app"
+        // Android 4.0.4 (Ice Cream Sandwich) is API 15 exactly - do not raise this,
+        // it would drop support for the target device.
+        minSdk 15
+        targetSdk 15
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}

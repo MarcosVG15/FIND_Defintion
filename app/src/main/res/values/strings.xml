@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Define</string>
+    <string name="definition_label">DEFINITION</string>
+    <string name="synonyms_label">SYNONYMS</string>
+    <string name="press_and_speak">Press and speak</string>
+    <string name="release_to_stop">Release to stop</string>
+    <string name="definition_unavailable">Could not fetch a definition.</string>
+    <string name="error_no_speech">Didn\'t catch that, try again</string>
+    <string name="error_recognizer_unavailable">No speech recognizer available on this device</string>
+    <string name="error_network">Could not reach the middleman server</string>
+</resources>
