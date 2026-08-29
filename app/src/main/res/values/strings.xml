@@ -8,4 +8,11 @@
     <string name="error_no_speech">Didn\'t catch that, try again</string>
     <string name="error_recognizer_unavailable">No speech recognizer available on this device</string>
     <string name="error_network">Could not reach the middleman server</string>
+    <string name="error_speech_network">No network — speech recognition needs a connection</string>
+    <string name="error_speech_network_timeout">Network timed out</string>
+    <string name="error_speech_audio">Microphone error</string>
+    <string name="error_speech_server">Recognition server error</string>
+    <string name="error_speech_client">Recognizer client error</string>
+    <string name="error_speech_busy">Recognizer is busy, press again</string>
+    <string name="error_speech_permission">Microphone permission denied</string>
 </resources>

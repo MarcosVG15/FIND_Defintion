@@ -47,6 +47,7 @@ public class MainActivity extends Activity {
 
     private SpeechRecognizer speechRecognizer;
     private Intent recognizerIntent;
+    private boolean isListening;
 
     private View card;
     private TextView tvWord;
@@ -109,11 +110,24 @@ public class MainActivity extends Activity {
     }
 
     private void startListening() {
+        // A second ACTION_DOWN before the previous session finished tearing down
+        // is what the service answers with ERROR_RECOGNIZER_BUSY (8). Guard on our
+        // own state, then cancel() to clear any half-torn-down session - cancel()
+        // is a no-op when the recognizer is already idle.
+        if (isListening) {
+            return;
+        }
+        isListening = true;
         halo.setAlpha(HALO_LISTENING_ALPHA);
+        speechRecognizer.cancel();
         speechRecognizer.startListening(recognizerIntent);
     }
 
     private void stopListening() {
+        if (!isListening) {
+            return;
+        }
+        isListening = false;
         speechRecognizer.stopListening();
         halo.setAlpha(HALO_IDLE_ALPHA);
     }
@@ -136,17 +150,40 @@ public class MainActivity extends Activity {
 
         @Override
         public void onError(int error) {
+            isListening = false;
             halo.setAlpha(HALO_IDLE_ALPHA);
-            if (error == SpeechRecognizer.ERROR_NO_MATCH
-                    || error == SpeechRecognizer.ERROR_SPEECH_TIMEOUT) {
-                Toast.makeText(MainActivity.this, R.string.error_no_speech, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(MainActivity.this, "Speech error code " + error, Toast.LENGTH_SHORT).show();
+            // Without this the failed session can linger and the next press comes
+            // back as ERROR_RECOGNIZER_BUSY instead of the real error.
+            speechRecognizer.cancel();
+            Toast.makeText(MainActivity.this, describeSpeechError(error), Toast.LENGTH_SHORT).show();
+        }
+
+        private String describeSpeechError(int error) {
+            switch (error) {
+                case SpeechRecognizer.ERROR_NETWORK:
+                    return getString(R.string.error_speech_network);
+                case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
+                    return getString(R.string.error_speech_network_timeout);
+                case SpeechRecognizer.ERROR_AUDIO:
+                    return getString(R.string.error_speech_audio);
+                case SpeechRecognizer.ERROR_SERVER:
+                    return getString(R.string.error_speech_server);
+                case SpeechRecognizer.ERROR_CLIENT:
+                    return getString(R.string.error_speech_client);
+                case SpeechRecognizer.ERROR_RECOGNIZER_BUSY:
+                    return getString(R.string.error_speech_busy);
+                case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS:
+                    return getString(R.string.error_speech_permission);
+                case SpeechRecognizer.ERROR_NO_MATCH:
+                case SpeechRecognizer.ERROR_SPEECH_TIMEOUT:
+                default:
+                    return getString(R.string.error_no_speech);
             }
         }
 
         @Override
         public void onResults(Bundle results) {
+            isListening = false;
             ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             if (matches != null && !matches.isEmpty()) {
                 String heard = matches.get(0);

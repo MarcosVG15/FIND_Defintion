@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="12dp">
 
             <LinearLayout
                 android:id="@+id/card"
@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/card_background"
-                android:padding="20dp"
+                android:padding="14dp"
                 android:visibility="gone">
 
                 <TextView
@@ -30,24 +30,24 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:textColor="@color/text_primary"
-                    android:textSize="28sp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvPhonetic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="4dp"
                     android:gravity="center_horizontal"
                     android:textColor="@color/text_secondary"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
                     android:visibility="gone" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginBottom="18dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
                     android:background="@color/divider" />
 
                 <LinearLayout
@@ -57,9 +57,9 @@
                     android:gravity="center_vertical">
 
                     <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginRight="6dp"
                         android:src="@drawable/icon_book" />
 
                     <TextView
@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/definition_label"
                         android:textColor="@color/accent_green"
-                        android:textSize="13sp"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -75,17 +75,17 @@
                     android:id="@+id/tvDefinition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="6dp"
                     android:textColor="@color/text_body"
-                    android:textSize="16sp"
-                    android:lineSpacingExtra="4dp" />
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="2dp" />
 
                 <View
                     android:id="@+id/synonymsDivider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginBottom="18dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
                     android:background="@color/divider"
                     android:visibility="gone" />
 
@@ -98,9 +98,9 @@
                     android:visibility="gone">
 
                     <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_marginRight="8dp"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginRight="6dp"
                         android:src="@drawable/icon_layers" />
 
                     <TextView
@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/synonyms_label"
                         android:textColor="@color/accent_green"
-                        android:textSize="13sp"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -116,7 +116,7 @@
                     android:id="@+id/flowSynonyms"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="6dp"
                     android:visibility="gone" />
 
             </LinearLayout>
@@ -126,7 +126,7 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:indeterminate="true"
                 android:visibility="gone" />
 
@@ -138,25 +138,25 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:paddingTop="16dp"
-        android:paddingBottom="28dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="14dp">
 
         <RelativeLayout
-            android:layout_width="180dp"
-            android:layout_height="180dp">
+            android:layout_width="120dp"
+            android:layout_height="120dp">
 
             <View
                 android:id="@+id/halo"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_centerInParent="true"
                 android:alpha="0.5"
                 android:background="@drawable/mic_halo" />
 
             <ImageButton
                 android:id="@+id/btnSpeak"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
                 android:layout_centerInParent="true"
                 android:background="@null"
                 android:scaleType="fitCenter"
@@ -167,10 +167,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="8dp"
             android:text="@string/press_and_speak"
             android:textColor="@color/text_primary"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -179,7 +179,7 @@
             android:layout_marginTop="2dp"
             android:text="@string/release_to_stop"
             android:textColor="@color/text_secondary"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
